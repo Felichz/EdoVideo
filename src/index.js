@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import HelloWorld from './components/HelloWorld';
+import App from './containers/App';
 
 if (typeof document !== 'undefined') {
     ReactDom.render(
-        <HelloWorld/>,
+        <App/>,
         document.getElementById('root')
     );
 }

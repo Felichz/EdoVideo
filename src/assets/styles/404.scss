@@ -1,0 +1,37 @@
+body {
+    overflow: hidden;
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 190px);
+    color: white;
+    overflow: hidden;
+
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+
+
+.not-found__text {
+    margin: 0;
+}
+
+.not-found h1 {
+    font-size: 150px;
+}
+
+.not-found h2 {
+    font-size: 50px;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
