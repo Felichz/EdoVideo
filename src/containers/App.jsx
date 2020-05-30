@@ -7,52 +7,41 @@ import CarouselItem from '../components/CarouselItem';
 import Footer from '../components/Footer';
 import '../assets/styles/general.scss';
 
-import bgImage from '../assets/img/bg.jpeg';
-
 const App = () => {
-    const [video, setVideo] = useState([]);
-    const [title, setTitle] = useState('Title');
+    const [videos, setVideos] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:3000/initialState')
             .then(response => response.json())
-            .then(data => setVideo(data));
-        console.log(video);
+            .then(data => {
+                setVideos(data);
+            });
     }, []);
 
-    useEffect(() => {
-        document.title = title;
-        console.log(title);
-    }, [title]);
+    if (videos.categories) {
+        videos.categories.map(category => {
+            console.log(category.title);
+        });
+    }
 
     return (
         <div className="App">
             <Header/>
-            <Search value={title} onChange={e => setTitle(e.target.value)}/>
-            <Category title="My List">
-                <Carousel>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                </Carousel>
-            </Category>
+            <Search/>
 
-            <Category title="Originales de Edo Video">
-                <Carousel>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                    <CarouselItem/>
-                </Carousel>
-            </Category>
+            {videos.categories &&
+                videos.categories.map((category, index) => 
+
+                    <Category title={category.title} key={index}>
+                        <Carousel>
+                            {category.videos.map(video =>
+                                <CarouselItem {...video}/>
+                            )}
+                        </Carousel>
+                    </Category>
+
+                )
+            }
             
             <Footer/>
         </div>

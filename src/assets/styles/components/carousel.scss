@@ -25,13 +25,15 @@
     }
 
     &:hover .carousel-item {
+        filter: grayscale(1);
         opacity: 0.5;
     }
 
     .carousel-item:hover {
         margin-right: 110px;
         transform: scale(1.5);
-        opacity: 1 !important;
+        filter: grayscale(0);
+        opacity: 1;
     }
 }
 
