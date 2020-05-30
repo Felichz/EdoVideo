@@ -10,12 +10,12 @@ import '../assets/styles/general.scss';
 import useFetch from '../hooks/useFetch';
 import config from '../config';
 
-const App = () => {
+const Home = () => {
 
     const videos = useFetch(config.apiUrl);
 
     return (
-        <div className="App">
+        <div className="Home">
             <Header/>
             <Search/>
 
@@ -42,4 +42,4 @@ const App = () => {
     )
 };
 
-export default App;
+export default Home;
