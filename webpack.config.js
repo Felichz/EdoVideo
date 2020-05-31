@@ -42,6 +42,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    historyApiFallback: true // Prevents default browser refresh on form submission and link change
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",

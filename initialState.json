@@ -1,5 +1,7 @@
 {
     "initialState": {
+        "user": {},
+        "playing": {},
         "categories": [
             {
                 "title": "My List",

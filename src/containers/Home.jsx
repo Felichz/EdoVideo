@@ -1,45 +1,42 @@
-import React, {useState, useEffect} from 'react';
-import Header from '../components/Header';
+import React from 'react';
 import Search from '../components/Search';
 import Category from '../components/Category';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer';
 import '../assets/styles/general.scss';
 
-import useFetch from '../hooks/useFetch';
-import config from '../config';
+import { connect } from 'react-redux';
 
-const Home = () => {
-
-    const videos = useFetch(config.apiUrl);
+const Home = ({categories}) => {
 
     return (
-        <div className="Home">
-            <Header/>
+        // React Fragment
+        <>
             <Search/>
 
-            {videos.categories &&
-                videos.categories.map((category, index) => {
+            {categories.map((category, index) => {
 
-                    if (category.videos.length > 0) {
-                        return (
-                            <Category title={category.title} key={index}>
-                                <Carousel>
-                                    {category.videos.map(video =>
-                                        <CarouselItem {...video} key={video.id}/>
-                                    )}
-                                </Carousel>
-                            </Category>
-                        )
-                    }
+                if (category.videos.length > 0) {
+                    return (
+                        <Category title={category.title} key={index}>
+                            <Carousel>
+                                {category.videos.map(video =>
+                                    <CarouselItem {...video} key={video.id}/>
+                                )}
+                            </Carousel>
+                        </Category>
+                    )
+                }
 
-                })
-            }
-            
-            <Footer/>
-        </div>
+            })}
+        </>
     )
 };
 
-export default Home;
+const mapStateToProps = state => ({
+    categories: state.categories
+});
+
+const connectCategories = connect(mapStateToProps);
+
+export default connectCategories(Home);

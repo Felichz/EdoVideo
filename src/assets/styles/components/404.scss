@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .not-found {
@@ -12,11 +12,9 @@ body {
     overflow: hidden;
 
     animation-name: pulse;
-    animation-duration: 2s;
+    animation-duration: 2s;overflow: hidden;
     animation-iteration-count: infinite;
 }
-
-
 
 .not-found__text {
     margin: 0;
