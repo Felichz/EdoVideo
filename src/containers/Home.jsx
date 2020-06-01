@@ -35,9 +35,9 @@ const Home = props => {
     )
 };
 
-const mapStateToProps = state => {
-    return { categories: state.categories };
-}
+const mapStateToProps = state => ({
+    categories: state.categories
+});
 
 const connectCategories = connect(mapStateToProps);
 

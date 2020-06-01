@@ -8,6 +8,8 @@ import playButton from '../assets/img/play-button.png';
 import addButton from '../assets/img/add-button.png';
 import removeButton from '../assets/img/remove-button.png';
 
+import config from '../config';
+
 const CarouselItem = props => {
     const { id, cover, title, year, contentRating, duration, userItem } = props;
 
@@ -20,12 +22,12 @@ const CarouselItem = props => {
                 contentRating,
                 duration
             },
-            'My List'
+            config.userFavoriteList
         );
     }
 
     function handleRemoveFavorite() {
-        props.removeVideoFromCategory(id, 'My List');
+        props.removeVideoFromCategory(id, config.userFavoriteList);
     }
 
     return (

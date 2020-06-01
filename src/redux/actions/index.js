@@ -9,3 +9,8 @@ export const removeVideoFromCategory = (id, targetCategory) => ({
     id,
     targetCategory
 });
+
+export const loginRequest = (formData) => ({
+    type: 'LOGIN_REQUEST',
+    formData
+});

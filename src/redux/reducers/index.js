@@ -8,6 +8,13 @@ const reducer = (state, action) => {
             return addVideoToCategory(state, action);
         case 'REMOVE_VIDEO_FROM_CATEGORY':
             return removeVideoFromCategory(state, action);
+        case 'LOGIN_REQUEST':
+
+            return {
+                ...state,
+                user: action.formData
+            }
+            
         default:
             return state
     }
