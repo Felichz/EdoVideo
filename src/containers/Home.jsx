@@ -7,6 +7,7 @@ import '../assets/styles/general.scss';
 
 import { connect } from 'react-redux';
 
+
 const Home = props => {
 
     const {categories} = props;

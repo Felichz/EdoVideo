@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import config from '../config';
 
 import Layout from '../containers/Layout';
 import Home from '../containers/Home';
@@ -8,7 +9,7 @@ import Register from '../containers/Register';
 import NotFound from '../containers/NotFound';
 
 const App = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={config.baseUrl}>
         <Layout>
             <Switch>
                 <Route exact path="/" component={Home}/>
