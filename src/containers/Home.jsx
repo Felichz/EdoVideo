@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Search from '../components/Search';
 import Category from '../components/Category';
 import Carousel from '../components/Carousel';
@@ -7,8 +7,10 @@ import '../assets/styles/general.scss';
 
 import { connect } from 'react-redux';
 
-const Home = ({categories}) => {
+const Home = props => {
 
+    const {categories} = props;
+    
     return (
         // React Fragment
         <>
@@ -21,7 +23,7 @@ const Home = ({categories}) => {
                         <Category title={category.title} key={index}>
                             <Carousel>
                                 {category.videos.map(video =>
-                                    <CarouselItem {...video} key={video.id}/>
+                                    <CarouselItem {...video} userItem={category.userList} key={video.id}/>
                                 )}
                             </Carousel>
                         </Category>
@@ -33,9 +35,9 @@ const Home = ({categories}) => {
     )
 };
 
-const mapStateToProps = state => ({
-    categories: state.categories
-});
+const mapStateToProps = state => {
+    return { categories: state.categories };
+}
 
 const connectCategories = connect(mapStateToProps);
 

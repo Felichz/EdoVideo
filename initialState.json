@@ -5,6 +5,7 @@
         "categories": [
             {
                 "title": "My List",
+                "userList": true,
                 "videos": []
             },
             {
