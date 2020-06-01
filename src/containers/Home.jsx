@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 
 const Home = props => {
 
-    const {categories} = props;
+    const { categories } = props;
     
     return (
         // React Fragment
