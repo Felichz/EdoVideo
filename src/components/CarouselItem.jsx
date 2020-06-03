@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addVideoToCategory } from '../redux/actions';
@@ -13,21 +14,26 @@ import config from '../config';
 const CarouselItem = props => {
     const { id, cover, title, year, contentRating, duration, userItem } = props;
 
-    function handleSetFavorite() {
-        props.addVideoToCategory(
-            {
-                cover,
-                title,
-                year,
-                contentRating,
-                duration
-            },
-            config.userFavoriteList
-        );
+    const handleSetFavorite = ({ target }) => {
+        // This validation prevents the button work when it is invisible
+        if (target.getBoundingClientRect().width >= 45) {
+            props.addVideoToCategory(
+                {
+                    cover,
+                    title,
+                    year,
+                    contentRating,
+                    duration
+                },
+                config.userFavoriteList
+            );
+        }
     }
 
-    function handleRemoveFavorite() {
-        props.removeVideoFromCategory(id, config.userFavoriteList);
+    const handleRemoveFavorite = ({ target }) => {
+        if (target.getBoundingClientRect().width >= 45) {
+            props.removeVideoFromCategory(id, config.userFavoriteList);
+        }
     }
 
     return (
@@ -35,7 +41,9 @@ const CarouselItem = props => {
             <img className="carousel-item__img" src={cover} alt="Thumbnail" />
             <div className="carousel-item__details">
                 <div>
-                    <img className="carousel-item__details--img" src={playButton} alt="Play" />
+                    <Link to={'/play/' + id}>
+                        <img className="carousel-item__details--img" src={playButton} alt="Play" />
+                    </Link>
                     <img 
                         className="carousel-item__details--img"
                         src={userItem ? removeButton : addButton}
