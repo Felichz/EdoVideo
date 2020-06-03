@@ -1,6 +1,6 @@
 const config = {
-    baseUrl: '/edovideo',
-    apiUrl: 'http://localhost:3000/initialState',
+    baseUrl: '/',
+    apiUrl: '/initialState',
     userFavoriteList: 'My favorites'
 }
 

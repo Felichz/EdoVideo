@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import reducer from './redux/reducers';
 
 import config from './config';
+import apiData from '../initialState.json';
 
 import App from './routes/App';
 
@@ -23,7 +24,9 @@ function init(initialState) {
 }
 
 if (typeof document !== 'undefined') {
-    fetch(config.apiUrl)
-        .then( response => response.json() )
-        .then( initialState => init(initialState) );
+    // fetch(config.apiUrl)
+    //     .then( response => response.json() )
+    //     .then( initialState => init(initialState) );
+
+    init(apiData);
 }

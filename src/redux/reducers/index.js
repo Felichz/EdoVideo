@@ -14,6 +14,20 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.formData
             }
+        
+        case 'REGISTER_REQUEST':
+
+            return {
+                ...state,
+                user: action.formData
+            }
+
+        case 'LOGOUT_REQUEST':
+
+            return {
+                ...state,
+                user: { email: '' }
+            }
             
         default:
             return state
