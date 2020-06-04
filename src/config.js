@@ -1,5 +1,5 @@
 const config = {
-    baseUrl: '/edovideo',
+    baseUrl: '/',
     apiUrl: '/initialState',
     userFavoriteList: 'My favorites'
 }

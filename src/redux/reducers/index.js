@@ -1,7 +1,10 @@
 import addVideoToCategory from './addVideoToCategory';
 import removeVideoFromCategory from './removeVideoFromCategory';
+import videoSearch from './videoSearch';
+import getVideoById from './utils/getVideoById';
 
 const reducer = (state, action) => {
+    let video = undefined;
     
     switch (action.type) {
         case 'ADD_VIDEO_TO_CATEGORY':
@@ -29,6 +32,15 @@ const reducer = (state, action) => {
                 user: { email: '' }
             }
             
+        case 'GET_VIDEO_SOURCE':
+
+            video = getVideoById(state.categories, action.id);
+
+            return {
+                ...state,
+                playingVideoSource: (video ? video.source : undefined)
+            };
+
         default:
             return state
     }

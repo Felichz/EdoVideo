@@ -28,9 +28,7 @@ const Header = ({user, logoutRequest}) => {
                         alt={ isLogged ? user.email : "User" }
                     />
                     { isLogged ?
-                        <Link to="/account">
-                            Profile
-                        </Link>
+                        user.name
                         :
                         <p>Account</p>
                     }
@@ -38,6 +36,11 @@ const Header = ({user, logoutRequest}) => {
                 <ul>
                     { isLogged ?
                         <>
+                            <li>
+                                <Link to="/account">
+                                    Profile
+                                </Link>
+                            </li>
                             <li onClick={handleLogout}>
                                 <Link to="/">
                                     Logout

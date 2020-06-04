@@ -17,31 +17,9 @@
     cursor: pointer;
 }
 
-/*
-.header__logo {
-    position: relative;
-    margin: 0;
-    margin-left: 15px;
-    font-size: 65px;
-    font-weight: 400;
-}
-
-.header__logo span:first-child {
-    font-family: RadonDeco;
-    color: white
-}
-
-.header__logo span:last-child {
-    position: absolute;
-    top: 29%;
-    left: 80%;
-    font-size: 60%;
-    font-family: RadonBold;
-    color: white;
-}
-*/
-
 .header__menu {
+    z-index: 10;
+    min-width: 60px;
     position: relative;
     color: white;
 }
@@ -65,17 +43,15 @@
 .header__menu ul {
     display: none;
     position: absolute;
-    left: 15px;
+    left: 0;
     padding: 0 15px;
     margin: 0;
     text-align: right;
     list-style: none;
-    /*
-    background: black;
-    background: linear-gradient(180deg, black 40%, transparent);
-    */
-    background: linear-gradient(0deg, rgba(0,0,0,.3) 0%, transparent 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
     border-radius: 0 0 5px 5px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .header__menu:hover ul, .header__menu ul:hover {
@@ -84,6 +60,7 @@
 
 .header__menu ul li {
     margin: 10px 0;
+    text-align: center;
 }
 
 .header__menu ul a {

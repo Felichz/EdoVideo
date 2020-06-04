@@ -23,3 +23,8 @@ export const registerRequest = formData => ({
 export const logoutRequest = () => ({
     type: 'LOGOUT_REQUEST'
 });
+
+export const getVideoSource = id => ({
+    type: "GET_VIDEO_SOURCE",
+    id
+})

@@ -1,6 +1,6 @@
 {
     "user": {},
-    "playing": {},
+    "playingVideoSource": {},
     "categories": [
         {
             "title": "My favorites",
@@ -21,7 +21,7 @@
                     "duration": 164,
                     "cover": "https://i.picsum.photos/id/1/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 3,
@@ -34,7 +34,7 @@
                     "duration": 137,
                     "cover": "https://i.picsum.photos/id/10/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 4,
@@ -47,7 +47,7 @@
                     "duration": 163,
                     "cover": "https://i.picsum.photos/id/20/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 5,
@@ -60,7 +60,7 @@
                     "duration": 194,
                     "cover": "https://i.picsum.photos/id/30/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 6,
@@ -73,7 +73,7 @@
                     "duration": 124,
                     "cover": "https://i.picsum.photos/id/40/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 7,
@@ -86,7 +86,7 @@
                     "duration": 179,
                     "cover": "https://i.picsum.photos/id/50/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 }
             ]
         },
@@ -104,7 +104,7 @@
                     "duration": 148,
                     "cover": "https://i.picsum.photos/id/60/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 9,
@@ -117,7 +117,7 @@
                     "duration": 128,
                     "cover": "https://i.picsum.photos/id/70/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 10,
@@ -130,7 +130,7 @@
                     "duration": 346,
                     "cover": "https://i.picsum.photos/id/80/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 11,
@@ -143,7 +143,7 @@
                     "duration": 226,
                     "cover": "https://i.picsum.photos/id/90/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 12,
@@ -156,7 +156,7 @@
                     "duration": 190,
                     "cover": "https://i.picsum.photos/id/100/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 },
                 {
                     "id": 13,
@@ -169,7 +169,7 @@
                     "duration": 160,
                     "cover": "https://i.picsum.photos/id/110/800/600.jpg",
                     "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-                    "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
+                    "source": "https://anderssonfelix.com/edovideo/testVideo.mp4"
                 }
             ]
         }
