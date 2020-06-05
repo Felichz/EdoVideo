@@ -22,6 +22,7 @@ const Player = props => {
                 />
             </video>
             <div className="Player-back">
+                {/* Go back */}
                 <Link to="/">
                     <button type="button">
                         Back to Home
