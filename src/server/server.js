@@ -87,7 +87,7 @@ if (NODE_ENV === 'development') {
     );
     app.use(webpackHotMiddleware(compiler));
 } else {
-    app.use(express.static(path.resolve('public')));
+    app.use(express.static(path.resolve('src', 'server', 'public')));
 }
 // app.use('/assets/img', express.static(path.resolve('dist', 'assets', 'img')));
 

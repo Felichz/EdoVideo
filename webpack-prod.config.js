@@ -10,7 +10,7 @@ module.exports = {
     mode: 'production',
     output: {
         path: path.resolve(__dirname, 'trash'),
-        filename: '../public/app.js',
+        filename: '../src/server/public/app.js',
         publicPath: BASE_URL || '/',
     },
     resolve: {

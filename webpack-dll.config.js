@@ -19,7 +19,7 @@ module.exports = {
     },
     mode: 'production',
     output: {
-        path: path.resolve(__dirname, 'public'),
+        path: path.resolve(__dirname, 'src', 'server', 'public'),
         filename: '[name].js',
         // Usamos el mismo nombre que el modulo para poder
         // importar la libreria globalmente de la misma manera

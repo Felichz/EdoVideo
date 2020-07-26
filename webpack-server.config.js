@@ -7,8 +7,8 @@ module.exports = {
     entry: ['./index.js'],
     mode: 'production',
     output: {
-        path: path.join(__dirname, 'public'),
-        filename: '../dist/bundle.js',
+        path: path.join(__dirname, 'src', 'server', 'public'),
+        filename: '../../../dist/bundle.js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
