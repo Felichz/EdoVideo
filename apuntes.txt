@@ -1,0 +1,61 @@
+Configuraciones para desarrollo
+
+    Webpack Dev Middleware
+        Así como podemos levantar un server con Wepack Live Server, también podemos configurar
+        el nuestro manualmente, y para eso se utiliza este Middleware, el cual ya es utilizado
+        por Wepack Live Server por dentro.
+
+        Básicamente lo que hace es compilar el proyecto, guardar el bundle en memoria, y
+        servirlo mediante Http.
+
+    Webpack Hot Middleware
+        Este Middleware lo utilizamos para instalar las funcionalidades necesarias del lado del
+        servidor para activar Hot Module Reloading.
+
+        En la configuración de webpack es necesario agregar el plugin "HotModuleReplacementPlugin"
+        y agregar la propiedad "hot: true" en las options del Webpack Dev Middleware.
+
+        También es necesario configurar el HMR en el lado del cliente, por ejemplo en un proyecto
+        de React se puede hacer uso del paquete "React Hot Loader".
+
+Responder con un HTML manualmente desde Express
+    Normalmente se envia al usuario un HTML limpio de Webpack con unos llamados a nuestros archivos
+    css y js, entonces la página se renderiza completa una vez ya carga el javascript y este
+    manipula el DOM. Pero en Server Side Rendering, ejecutamos una vez todo ese código javascript desde
+    el servidor para crear un HTML inicial, el cual le enviamos al cliente pre-renderizado. Este HTML
+    estático seguiría teniendo el llamado al javascript principal, una vez sea descargado, se ejecuta
+    y el usuario ya puede interactuar con la app dinámicamente.
+
+    Para lograr esto en React, cargamos todas las dependencias de React necesarias para realizar un
+    render, y utilizamos una función del ReactDOM para renderziar dentro de un string, entonces
+    podemos insertar ese string dentro de una plantilla HTML para luego enviarla al usuario.
+
+renderToString (de react-router-dom)
+    Le pasamos un JSX y nos retorna la renderización app dentro de un string.
+
+Static Router (de react-router-dom)
+    En el proyecto normal de React, en el router principal, envolvemos al app en un BrowserRouter
+    el cual es dinámico, pero en SSR queremos generar un render estático, el usuario no va a navegar
+    utilizando routing. En este caso utilizamos un StaticRouter para generar un router que solo se
+    encarga de matchear una única ruta y listo.
+
+    context
+        En un entorno normal, cuando se encuentra un <Redirect>, cambia el estado de la App,
+        y como consecuencia cambia lo que se muestra en pantalla. Pero un renderizado SSR
+        es stateless, si en él se encuentra un <Redirect>, no se podrá cambiar el estado.
+
+        Por eso el Static Router recibe un objeto context
+            <StaticRouter location={req.url} context={{}}>
+
+        Si se encuentra un Redirect, se va a guardar la nueva url en context.url, de esta manera,
+        desde el lado del server, podemos verificar si luego de la renderización, existe context.url,
+        si existe, redireccionamos manualmente.
+
+            if (context.url) {
+                // Redirecciono con redirect()
+            } else {
+                // Respondo con res.send()
+            }
+
+ignore-styles
+    Ignora todos los llamados a archivos de estilos del lado del servidor
