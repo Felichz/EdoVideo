@@ -1,13 +1,14 @@
 const express = require('express');
+const webpack = require('webpack');
+
 const path = require('path');
 require('dotenv').config();
 const debug = require('debug')('app:server');
 
-const app = express();
+// Middlewares
+const helmet = require('helmet');
 
-// Webpack
-const webpack = require('webpack');
-// Webpack
+// Webpack Developing Middlewares
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
@@ -72,6 +73,11 @@ function renderApp(req, res) {
         res.send(setResponse(html, initialState));
     }
 }
+
+// Start App
+const app = express();
+
+app.use(helmet());
 
 if (NODE_ENV === 'development') {
     const webpackConfig = require('../../webpack.config');
