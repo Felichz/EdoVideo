@@ -2,9 +2,9 @@ import React from 'react';
 import RegisterForm from '../components/RegisterForm';
 
 const Login = () => (
-    <>
-        <RegisterForm/>
-    </>
+  <>
+    <RegisterForm />
+  </>
 );
- 
+
 export default Login;

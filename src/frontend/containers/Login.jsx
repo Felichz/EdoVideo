@@ -2,9 +2,9 @@ import React from 'react';
 import LoginForm from '../components/LoginForm';
 
 const Login = () => (
-    <>
-        <LoginForm/>
-    </>
+  <>
+    <LoginForm />
+  </>
 );
- 
+
 export default Login;

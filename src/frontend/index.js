@@ -8,15 +8,15 @@ import App from './routes/App';
 
 const isDev = process.env.NODE_ENV === 'development';
 if (typeof document !== 'undefined') {
-    const HotApp = hot(() => (
-        <MyProvider>
-            <App />
-        </MyProvider>
-    ));
+  const HotApp = hot(() => (
+    <MyProvider>
+      <App />
+    </MyProvider>
+  ));
 
-    (isDev ? ReactDOM.render : ReactDOM.hydrate)(
-        <HotApp />,
+  (isDev ? ReactDOM.render : ReactDOM.hydrate)(
+    <HotApp />,
 
-        document.getElementById('root')
-    );
+    document.getElementById('root'),
+  );
 }

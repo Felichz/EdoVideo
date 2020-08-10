@@ -6,54 +6,53 @@ import LoadingMessage from './LoadingMessage';
 import { getVideoSource } from '../redux/actions';
 import '../assets/styles/components/Player.scss';
 
-const Player = (props) => {
-    const id = props.match.params.id;
+const Player = ({ playingVideoSource, match }) => {
 
-    useLayoutEffect(() => {
-        props.getVideoSource(id);
-    }, []);
+  useLayoutEffect(() => {
+    props.getVideoSource(match.params.id);
+  }, []);
 
-    function goBack() {
-        props.history.goBack();
-    }
+  function goBack() {
+    props.history.goBack();
+  }
 
-    if (props.playingVideoSource === '') {
-        return (
-            <Layout>
-                <LoadingMessage />
-            </Layout>
-        );
-    } else if (props.playingVideoSource) {
-        return (
-            <>
-                <video controls autoPlay>
-                    <source src={props.playingVideoSource} type="video/mp4" />
-                </video>
-                <div className="Player-back">
-                    {/* Go back */}
-                    {/* <Link to="/"> */}
-                    <button type="button" onClick={goBack}>
-                        Go back
-                    </button>
-                    {/* </Link> */}
-                </div>
-            </>
-        );
-    } else {
-        return (
-            <Layout>
-                <NotFoundMessage />
-            </Layout>
-        );
-    }
+  if (playingVideoSource === '') {
+    return (
+      <Layout>
+        <LoadingMessage />
+      </Layout>
+    );
+  } if (playingVideoSource) {
+    return (
+      <>
+        <video controls autoPlay>
+          <source src={playingVideoSource} type='video/mp4' />
+        </video>
+        <div className='Player-back'>
+          {/* Go back */}
+          {/* <Link to="/"> */}
+          <button type='button' onClick={goBack}>
+            Go back
+          </button>
+          {/* </Link> */}
+        </div>
+      </>
+    );
+  }
+  return (
+    <Layout>
+      <NotFoundMessage />
+    </Layout>
+  );
+
 };
 
 const mapStateToProps = (state) => ({
-    playingVideoSource: state.playingVideoSource,
+  playingVideoSource: state.playingVideoSource,
 });
 
 const mapDispatchToProps = {
-    getVideoSource,
+  getVideoSource,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

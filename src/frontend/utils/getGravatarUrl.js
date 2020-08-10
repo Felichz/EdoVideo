@@ -1,11 +1,11 @@
 import md5 from 'md5';
 
 function getGravatarUrl(email) {
-    const baseUrl = 'https://gravatar.com/avatar/';
-    const formattedEmail = email.trim().toLowerCase();
-    const hash = md5(formattedEmail, { enconding: 'binary' });
+  const baseUrl = 'https://gravatar.com/avatar/';
+  const formattedEmail = email.trim().toLowerCase();
+  const hash = md5(formattedEmail, { enconding: 'binary' });
 
-    return baseUrl + hash;
+  return baseUrl + hash;
 }
 
 export default getGravatarUrl;

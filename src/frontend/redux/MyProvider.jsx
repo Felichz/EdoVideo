@@ -4,25 +4,27 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import reducer from './reducers';
 
-const MyProvider = (props) => {
-    if (typeof window !== 'undefined') {
-        // Client side store
+const MyProvider = ({ children }) => {
+  let store;
 
-        const preloadedState = window.__PRELOADED_STATE__;
+  if (typeof window !== 'undefined') {
+    // Client side store
 
-        const composeEnhancers =
-            window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const preloadedState = window.__PRELOADED_STATE__;
 
-        var store = createStore(reducer, preloadedState, composeEnhancers());
+    const composeEnhancers =
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-        delete window.__PRELOADED_STATE__;
-    } else {
-        // Server side store
+    store = createStore(reducer, preloadedState, composeEnhancers());
 
-        var store = createStore(reducer, props.initialState);
-    }
+    delete window.__PRELOADED_STATE__;
+  } else {
+    // Server side store
 
-    return <Provider store={store}>{props.children}</Provider>;
+    store = createStore(reducer, props.initialState);
+  }
+
+  return <Provider store={store}>{children}</Provider>;
 };
 
 export default MyProvider;

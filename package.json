@@ -11,7 +11,8 @@
     "start:dev": "set DEBUG=app:*& set NODE_ENV=development& nodemon src/server/index.js",
     "start:prod": "set NODE_ENV=production& npm run build:server && node dist/bundle.js",
     "build:start": "npm run build && npm run start:prod",
-    "lint": "eslint src/frontend/ --ext .js --ext .jsx"
+    "lint": "eslint src/frontend/ --ext .js --ext .jsx",
+    "lint:fix": "eslint src/frontend/ --ext .js --ext .jsx --fix"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "react-router": "^5.2.0",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
+    "react-hot-loader": "^4.12.21",
     "redux": "^4.0.5",
     "webpack": "^4.43.0",
     "webpack-manifest-plugin": "^2.2.0",
@@ -59,7 +61,6 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
-    "react-hot-loader": "^4.12.21",
     "sass-loader": "^8.0.2",
     "terser-webpack-plugin": "^4.0.0",
     "url-loader": "^4.1.0",
