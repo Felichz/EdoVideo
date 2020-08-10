@@ -13,11 +13,10 @@ module.exports = {
         // and then updates your client bundle accordingly.
         'webpack-hot-middleware/client?reload=true',
     ],
-    mode:
-        process.env.BUILD_MODE === 'production' ? 'production' : 'development',
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'assets/app.js',
+        filename: 'app.js',
         publicPath: BASE_URL || '/',
     },
     resolve: {
@@ -49,7 +48,7 @@ module.exports = {
                     loader: 'url-loader',
                     options: {
                         name: 'assets/img/[name].[ext]',
-                        limit: 8000,
+                        limit: 0,
                     },
                 },
             },

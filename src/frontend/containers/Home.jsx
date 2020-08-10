@@ -22,7 +22,7 @@ const Home = (props) => {
                             <Carousel>
                                 {category.videos.map((video) => (
                                     <CarouselItem
-                                        {...video}
+                                        video={video}
                                         userItem={category.userList}
                                         key={video.id}
                                     />

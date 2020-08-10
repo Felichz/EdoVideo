@@ -12,21 +12,13 @@ import removeButton from '../assets/img/remove-button.png';
 import config from '../config';
 
 const CarouselItem = (props) => {
-    const { id, cover, title, year, contentRating, duration, userItem } = props;
+    const { video, userItem } = props;
+    const { id, cover, title, year, contentRating, duration } = video;
 
     const handleSetFavorite = ({ target }) => {
         // This validation prevents the button work when it is invisible
         if (target.getBoundingClientRect().width >= 45) {
-            props.addVideoToCategory(
-                {
-                    cover,
-                    title,
-                    year,
-                    contentRating,
-                    duration,
-                },
-                config.userFavoriteList
-            );
+            props.addVideoToCategory(video, config.userFavoriteList);
         }
     };
 

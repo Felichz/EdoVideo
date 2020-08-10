@@ -1,14 +1,16 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
     context: path.resolve(__dirname, 'src', 'server'),
     entry: ['./index.js'],
     mode: 'production',
     output: {
-        path: path.join(__dirname, 'src', 'server', 'public'),
-        filename: '../../../dist/bundle.js',
+        path: path.join(__dirname, 'public'),
+        filename: '../dist/bundle.js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],

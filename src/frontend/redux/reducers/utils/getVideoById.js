@@ -1,14 +1,19 @@
+export const getVideoByIdInCategory = (category, id) => {
+    return category.videos.find((video) => {
+        if (video.id === parseInt(id)) {
+            return true;
+        }
+    });
+};
+
 const getVideoById = (categories, id) => {
     let foundVideo = undefined;
 
     categories.find((category) => {
-        return category.videos.find((video) => {
-            if (video.id === parseInt(id)) {
-                console.log(video);
-                foundVideo = video;
-                return true;
-            }
-        });
+        foundVideo = getVideoByIdInCategory(category, id);
+        if (foundVideo) {
+            return true;
+        }
     });
 
     return foundVideo;

@@ -5,8 +5,11 @@ const path = require('path');
 require('dotenv').config();
 const debug = require('debug')('app:server');
 
+const getManifest = require('./utils/getManifest');
+
 // Middlewares
 const helmet = require('helmet');
+const gzipStatic = require('connect-gzip-static');
 
 // Webpack Developing Middlewares
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -25,15 +28,21 @@ import initialState from '../frontend/redux/initialState.json';
 const { NODE_ENV, PORT } = process.env;
 
 debug('NODE_ENV: ' + NODE_ENV);
+const isDev = NODE_ENV === 'development';
 
-function setResponse(html, preloadedState) {
+function setResponse(html, preloadedState, hashManifest) {
+    const mainCss = isDev ? '/assets/app.css' : hashManifest['main.css'];
+    // const modulesJs = isDev ? 'modules.js' : hashManifest['modules.js'];
+    const vendorsJs = isDev ? 'vendors.js' : hashManifest['vendors.js'];
+    const mainJs = isDev ? '/app.js' : hashManifest['main.js'];
+
     return `
         <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="/assets/app.css">
+            <link rel="stylesheet" href="${mainCss}">
             <title>Edo Video</title>
         </head>
         <body>
@@ -45,10 +54,10 @@ function setResponse(html, preloadedState) {
             </script>
             ${
                 NODE_ENV !== 'development'
-                    ? '<script src="/modules.js"></script>'
+                    ? `<script src="${vendorsJs}"></script>`
                     : ''
             }
-            <script src="/app.js"></script>
+            <script src="${mainJs}"></script>
         </body>
         </html>
     `;
@@ -70,7 +79,7 @@ function renderApp(req, res) {
         redirect(context.url);
     } else {
         // we're good, send the response
-        res.send(setResponse(html, initialState));
+        res.send(setResponse(html, initialState, req.hashManifest));
     }
 }
 
@@ -79,7 +88,16 @@ const app = express();
 
 app.use(helmet());
 
-if (NODE_ENV === 'development') {
+app.use((req, res, next) => {
+    getManifest()
+        .then((data) => {
+            req.hashManifest = data;
+            next();
+        })
+        .catch(() => next());
+});
+
+if (isDev) {
     const webpackConfig = require('../../webpack.config');
 
     const compiler = webpack(webpackConfig);
@@ -93,9 +111,10 @@ if (NODE_ENV === 'development') {
     );
     app.use(webpackHotMiddleware(compiler));
 } else {
-    app.use(express.static(path.resolve('src', 'server', 'public')));
+    const ONE_DAY = 86400000;
+
+    app.use(gzipStatic(path.resolve('public'), { maxAge: ONE_DAY }));
 }
-// app.use('/assets/img', express.static(path.resolve('dist', 'assets', 'img')));
 
 app.get('*', renderApp);
 
