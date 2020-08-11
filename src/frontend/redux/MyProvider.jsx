@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import reducer from './reducers';
 
-const MyProvider = ({ children }) => {
+const MyProvider = ({ children, initialState }) => {
   let store;
 
   if (typeof window !== 'undefined') {
@@ -21,7 +21,7 @@ const MyProvider = ({ children }) => {
   } else {
     // Server side store
 
-    store = createStore(reducer, props.initialState);
+    store = createStore(reducer, initialState);
   }
 
   return <Provider store={store}>{children}</Provider>;

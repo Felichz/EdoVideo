@@ -47,17 +47,17 @@ function setResponse(html, preloadedState, hashManifest) {
         </head>
         <body>
             <div id="root">${html}</div>
-            <script>
+            <script defer>
                 window.__PRELOADED_STATE__ = ${JSON.stringify(
                     preloadedState
                 ).replace(/</g, '\\u003c')}
             </script>
             ${
                 NODE_ENV !== 'development'
-                    ? `<script src="${vendorsJs}"></script>`
+                    ? `<script src="${vendorsJs}" defer></script>`
                     : ''
             }
-            <script src="${mainJs}"></script>
+            <script src="${mainJs}" defer></script>
         </body>
         </html>
     `;
